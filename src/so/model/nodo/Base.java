@@ -175,11 +175,13 @@ public class Base extends Nodo{
 					}
 					super.setSoftware_disponibile(n_soft);
 					check= true;
+					
 				}
 			}
 		}else System.out.println(getPossessore().getNome()+": spazio non disponibile in ram");
 		if(check){
 			System.out.println(getPossessore().getNome()+": software creati con successo");
+			notifyAll();
 		} else System.out.println(getPossessore().getNome()+": creazione non eseguita");	
 	}
 

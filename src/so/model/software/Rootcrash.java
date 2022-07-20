@@ -25,11 +25,11 @@ public class Rootcrash extends Software {
 		return val_atk;
 	}
 
-	public void setVal_atk(int val_atk) {
+	public synchronized void setVal_atk(int val_atk) {
 		this.val_atk = val_atk;
 	}
 
-	public void setLivello(int livello) {
+	public synchronized void setLivello(int livello) {
 		super.setLivello(livello);
 		this.setVal_atk(livello);
 	}

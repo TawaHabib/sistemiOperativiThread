@@ -3,6 +3,7 @@ package so.model.main;
 import java.beans.PropertyChangeSupport;
 import java.util.concurrent.TimeUnit;
 
+import so.model.nodo.Cloud;
 import so.model.nodo.Nodo;
 import so.model.risorse.Firewall;
 import so.model.software.Antivirus;
@@ -38,8 +39,8 @@ public class Battaglia extends Thread{
 		
 	}
 
-	public void selezione(int quantita_v, int quantita_r) {
-		
+	public synchronized void selezione(int quantita_v, int quantita_r) {
+				
 		sel_attaccanti[1]= new Virus(attaccante.getStats_software_creati()[1].getLivello(), quantita_v);
 		sel_attaccanti[2]= new Rootcrash(attaccante.getStats_software_creati()[2].getLivello(), quantita_r);
 		
@@ -56,6 +57,8 @@ public class Battaglia extends Thread{
 			
 			attaccante.getStats_software_creati()[1].setQuantita(attaccante.getStats_software_creati()[1].getQuantita()-quantita_v);
 		}
+		
+		
 		
 		attaccante.setSoftware_disponibile(attaccante.getSoftware_disponibile()-(quantita_v+ quantita_r) );
 	}
@@ -112,7 +115,7 @@ public class Battaglia extends Thread{
 
 	public void aggiornastati() {
 
-		if (difensore.getTipologia().equals("cloud")) {
+		if (Cloud.class.isAssignableFrom(difensore.getClass())) {
 			
 			attaccante.compra_risorsa("Energia");
 			
@@ -127,8 +130,10 @@ public class Battaglia extends Thread{
 		else {
 
 			difensore.getPossessore().setBasi_prese(difensore.getPossessore().getBasi_prese()-1);
+			attaccante.getPossessore().setBasi_prese(attaccante.getPossessore().getBasi_prese()+1);
 			if(difensore.getPossessore().getBasi_prese()==0) {
 				difensore.getPossessore().setLife(false);
+				difensore.getPossessore().interrupt();
 			}
 			
 		}

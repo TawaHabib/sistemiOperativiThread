@@ -34,7 +34,7 @@ public class Potenziamento extends Thread {
 			}
 				scelta=(int) Math.floor((Math.random()*(max-min))+min);
 				risorsa=getScelta(scelta);
-				if(bot.getMap().trovaBase(bot).getRisorse()[2].getLivelloAntivirus()<40) {
+				if(bot.getMap().trovaBase(bot).getRisorse()[2].getLivelloAntivirus()<20) {
 					System.out.println(bot.getNome()+ " potenzia Energia per potenziamento ");
 					Integer i=bot.getMap().trovaBase(bot).getTempoRisorsa(risorsa)*1000;
 					changes.firePropertyChange(PROP_POTE, bot.getNome()+"potenzia energia", i);

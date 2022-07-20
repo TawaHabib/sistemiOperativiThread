@@ -176,10 +176,12 @@ public class MappaDefinitiva{
 	public  int checkx(int i) {
 
 		if(i>= x_max)
-			i= 0;
+			i=i%x_max;
 			
-		if (i<0) 
-			i=x_max-1;
+		if (i<0) {
+			i=Math.abs(i);
+			i=checkx(i);
+		}
 		
 		return i;
 	}
@@ -187,10 +189,12 @@ public class MappaDefinitiva{
 	public int checky(int i) {
 
 		if(i>= y_max)
-			i= 0;
+			i=i%y_max;
 			
-		if (i<0) 
-			i=y_max-1;
+		if (i<0){
+			i=Math.abs(i);
+			i=checky(i);
+		}
 		
 		return i;
 	}

@@ -23,7 +23,7 @@ public class AttaccoObs implements PropertyChangeListener {
 		if(Coordinate.class.isAssignableFrom(evt.getNewValue().getClass())&& Coordinate.class.isAssignableFrom(evt.getOldValue().getClass())) {
 			Coordinate attaccante=(Coordinate)evt.getNewValue();
 			Coordinate difensore=(Coordinate)evt.getOldValue();
-			int tempoAttaco=mainDefinitivo.getT_unitario()*1000;
+			int tempoAttaco=mainDefinitivo.getT_unitario()*1000+500;
 			partitaStage.addDifesa(mainDefinitivo.getTabellone().getNodo(attaccante.getX(), attaccante.getY()).getPossessore().getNome()+" sta attaccando il nodo"
 						+"("+(difensore.getX()-difensore.getY()/2)+","+ difensore.getY()+")"
 						, tempoAttaco);

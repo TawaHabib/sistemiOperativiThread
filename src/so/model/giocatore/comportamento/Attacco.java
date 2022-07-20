@@ -24,16 +24,19 @@ public class Attacco extends Thread {
 		boolean end_battle=false;
 		bot.cambiaTarget();
 		while(bot.getLife()) {
-			if (bot.getCont()>=bot.getAttaccabili().size()) {
-				bot.setIncremento(bot.getIncremento()+1);
-				bot.setCont(0);						
-				bot.cambiaTarget();
-			}
-			
 			try {
-					n_virus=(int)Math.floor( Math.random()*((bot.getMap().trovaBase(bot).getSoftware_disponibile()))+2);
+				
+					if (bot.getCont()>=bot.getAttaccabili().size()) {
+						bot.setIncremento(bot.getIncremento()+1);
+						bot.setCont(0);						
+						bot.cambiaTarget();
+					}
+			
+			
+					n_virus=(int)Math.floor( Math.random()*((bot.getMap().trovaBase(bot).getStats_software_creati()[1].getQuantita()))+2);
 					if(bot.getMap().trovaBase(bot).getStats_software_creati()[1].getQuantita()<n_virus||bot.getMap().trovaBase(bot).getStats_software_creati()[2].getQuantita()<1) {
-						System.out.println(bot.getNome()+" virus o rootcrash non disponibili, attacco tra 5 secondi");
+						System.out.println(bot.getNome()+" virus o rootcrash non disponibili, attacco tra 5 secondi....("+n_virus+",1)...("
+								+bot.getMap().trovaBase(bot).getStats_software_creati()[1].getQuantita()+","+bot.getMap().trovaBase(bot).getStats_software_creati()[2].getQuantita()+")");
 						Thread.sleep(5000);
 						continue;
 					}
@@ -43,7 +46,7 @@ public class Attacco extends Thread {
 					System.out.println(bot.getNome()+ " crea battaglia vs " + bot.getMap().getNodo(bot.getAttaccabili().get(bot.getCont()).getX(),bot.getAttaccabili().get(bot.getCont()).getY()).getPossessore().getNome());
 					
 					battle.selezione( n_virus, 1);
-					System.out.println(bot.getNome() + "ha selezionato virus: " + n_virus );
+					System.out.println(bot.getNome() + "ha selezionato virus: " + n_virus+ "e 1 rootcrash" );
 				
 					bot.getChanges().firePropertyChange(new PropertyChangeEvent(this, Bot.BOT_PROP, new Coordinate(bot.getAttaccabili().get(bot.getCont()).getX(),bot.getAttaccabili().get(bot.getCont()).getY()), bot.getBase()));	
 					TimeUnit.SECONDS.sleep(t_timer);

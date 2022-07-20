@@ -81,11 +81,11 @@ public abstract class Giocatore extends Thread implements Comparable<Giocatore>{
 		this.deltaCoin = deltaCoin;
 	}
 
-	public int getBasi_prese() {
+	public synchronized int getBasi_prese() {
 		return basi_prese;
 	}
 
-	public void setBasi_prese(int basi_prese) {
+	public synchronized void setBasi_prese(int basi_prese) {
 		Giocatore old= new Giocatore(this) {	
 		};
 		this.basi_prese = basi_prese;

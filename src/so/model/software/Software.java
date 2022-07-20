@@ -18,15 +18,15 @@ public abstract class Software {
 		return livello;
 	}
 
-	public void setLivello(int livello) {
+	public synchronized void setLivello(int livello) {
 		this.livello = livello;
 	}
 
-	public int getMax_lvl() {
+	public synchronized int getMax_lvl() {
 		return max_lvl;
 	}
 
-	public void setMax_lvl(int max_lvl) {
+	public synchronized void setMax_lvl(int max_lvl) {
 		this.max_lvl = max_lvl;
 	}
 
@@ -38,11 +38,11 @@ public abstract class Software {
 		this.nome = nome;
 	}
 
-	public int getQuantita() {
+	public synchronized int getQuantita() {
 		return quantita;
 	}
 
-	public void setQuantita(int quantita) {
+	public synchronized void setQuantita(int quantita) {
 		this.quantita = quantita;
 	}
 

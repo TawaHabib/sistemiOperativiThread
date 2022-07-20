@@ -101,9 +101,9 @@ public class BaseStatsPane extends Pane implements IDrawable {
 			ybAv.setText("Antivirus disp: ");
 			ybVr.setText("Virus disp: ");
 			ybRc.setText("Rootcrash disp: ");
-			avQy.setText("" + nodeBase.getSoftware_disponibile());
-			vrQy.setText("" + nodeBase.getSoftware_disponibile());
-			rcQy.setText("" + nodeBase.getSoftware_disponibile());
+			avQy.setText("" + nodeBase.getStats_software_creati()[0].getQuantita());
+			vrQy.setText("" + nodeBase.getStats_software_creati()[1].getQuantita());
+			rcQy.setText("" + nodeBase.getStats_software_creati()[2].getQuantita());
 
 			ybG.add(ybEnergy, 0, 0);
 			ybG.add(new Label("" + nodeBase.getE_disponibile()), 1, 0);

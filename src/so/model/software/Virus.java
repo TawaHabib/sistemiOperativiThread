@@ -15,7 +15,7 @@ public class Virus extends Software{
 		
 	}
 	
-	public int getVal_def() {
+	public  int getVal_def() {
 		return val_def;
 	}
 	
@@ -23,15 +23,15 @@ public class Virus extends Software{
 		this.val_def = val_def;
 	}
 
-	public int getVal_atk() {
+	public synchronized int getVal_atk() {
 		return val_atk;
 	}
 
-	public void setVal_atk(int val_atk) {
+	public synchronized void setVal_atk(int val_atk) {
 		this.val_atk = val_atk;
 	}
 
-	public void setLivello(int livello) {
+	public synchronized void setLivello(int livello) {
 		super.setLivello(livello);
 		this.setVal_atk(livello);
 	}
